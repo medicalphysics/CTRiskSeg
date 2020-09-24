@@ -6,7 +6,7 @@ cmake_minimum_required(VERSION 3.10...3.20)
 
 # This is your project statement. You should always list languages;
 # Listing the version is nice here since it sets lots of useful variables
-project(ctriskseglib VERSION 0.4.0 LANGUAGES CXX)
+project(ctriskseglib VERSION 0.1.0 LANGUAGES CXX)
 
 # If you set any CMAKE_ variables, that can go here.
 # (But usually don't do this, except maybe for C++ standard)
@@ -19,18 +19,17 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
 find_package(Threads REQUIRED) # for threading support
 find_package(Torch REQUIRED)
 
-
 set(HEADER_LIST 
     "${ctriskseglib_SOURCE_DIR}/include/ctriskseg/ctriskseg.h"
+    "${ctriskseglib_SOURCE_DIR}/include/ctriskseg/transform.h"
     )
 
 add_library(libctriskseg 
     src/ctriskseg.cpp
+    src/transform.cpp
     ${HEADER_LIST}
 	)
 target_include_directories(libctriskseg PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
-#target_include_directories(libctriskseg PRIVATE ${XRAYLIB_INCLUDES})
-
 
 # Make sure you link your targets with this command. It can also link libraries and
 # even flags, so linking a target that does not exist will not give a configure-time error.
@@ -63,7 +62,6 @@ endif()
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME AND BUILD_TESTING)
     add_subdirectory(tests)
 endif()
-
 
 # Docs by doxygen
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)

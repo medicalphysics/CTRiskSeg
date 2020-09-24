@@ -15,3 +15,6 @@ along with CTRiskSeg. If not, see < https://www.gnu.org/licenses/>.
 
 Copyright 2020 Erlend Andersen
 */
+#include "torch/script.h"
+
+
