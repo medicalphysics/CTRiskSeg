@@ -1,12 +1,12 @@
 
 set(TEST_SOURCES 
-    
+    "resample_test.cpp"
 )
 
 foreach(sourcefile ${TEST_SOURCES})
     get_filename_component(filename ${sourcefile} NAME_WLE)
     add_executable(${filename} ${sourcefile})
-    target_link_libraries(${filename} libdxmc)
+    target_link_libraries(${filename} libctriskseg)
     add_test(${filename} ${filename})
     set_tests_properties(${filename}
         PROPERTIES
